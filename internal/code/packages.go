@@ -3,6 +3,7 @@ package code
 import (
 	"bytes"
 	"path/filepath"
+	"strings"
 
 	"github.com/pkg/errors"
 	"golang.org/x/tools/go/packages"
@@ -29,6 +30,16 @@ type Packages struct {
 // LoadAll will call packages.Load and return the package data for the given packages,
 // but if the package already have been loaded it will return cached values instead.
 func (p *Packages) LoadAll(importPaths ...string) []*packages.Package {
+	// <FIX ISSUE WITH WINDOWS USING CRLF IN go.mod>
+	// Clear import paths to fix issue of CRLF on Windows
+	correctedImportPaths := []string{}
+	for _, path := range importPaths {
+		path = strings.ReplaceAll(path, "\r", "") // Windows issue
+		correctedImportPaths = append(correctedImportPaths, path)
+	}
+	importPaths = correctedImportPaths
+	// </FIX ISSUE WITH WINDOWS USING CRLF IN go.mod>
+
 	if p.packages == nil {
 		p.packages = map[string]*packages.Package{}
 	}
