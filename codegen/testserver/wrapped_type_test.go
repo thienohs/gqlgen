@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/99designs/gqlgen/client"
-	"github.com/99designs/gqlgen/codegen/testserver/otherpkg"
-	"github.com/99designs/gqlgen/graphql/handler"
+	"github.com/thienohs/gqlgen/client"
+	"github.com/thienohs/gqlgen/codegen/testserver/otherpkg"
+	"github.com/thienohs/gqlgen/graphql/handler"
 	"github.com/stretchr/testify/require"
 )
 

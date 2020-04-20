@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/99designs/gqlgen/client"
-	"github.com/99designs/gqlgen/graphql/handler"
+	"github.com/thienohs/gqlgen/client"
+	"github.com/thienohs/gqlgen/graphql/handler"
 	"github.com/stretchr/testify/require"
 )
 
